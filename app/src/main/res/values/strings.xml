@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SaveThePlanet</string>
+    <string name="firstName">First Name</string>
+    <string name="producer">Producer</string>
+    <string name="consumer">Consumer</string>
+    <string name="company_name">Company Name</string>
+    <string name="agree_with_terms_conditions"><![CDATA[Agree with terms & conditions]]></string>
+    <string name="create_your_account">Create your account</string>
 </resources>
