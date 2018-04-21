@@ -6,4 +6,11 @@
     <string name="company_name">Company Name</string>
     <string name="agree_with_terms_conditions"><![CDATA[Agree with terms & conditions]]></string>
     <string name="create_your_account">Create your account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="save_the_planet">Save the Planet</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="display_name">Display Name</string>
+    <string name="last_name">Last Name</string>
 </resources>

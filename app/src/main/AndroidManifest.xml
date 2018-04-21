@@ -10,16 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".activity.SignInGoogleEmailActivity" />
+        <activity android:name=".activity.SignUpEmailActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.SignInSignUpActivity" />
+        <activity android:name=".activity.BaseActivity" />
+        <activity android:name=".activity.SignInEmailActivity" />
+        <activity android:name=".activity.HomeActivity" />
     </application>
 
 </manifest>

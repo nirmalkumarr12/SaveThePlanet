@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:background="@color/colorPrimary">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_account_circle_white_24dp" />
+
+            <TextView
+                android:id="@+id/displayName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/profilePicture"
+                android:layout_centerInParent="true"
+                android:text="@string/display_name"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <mehdi.sakout.fancybuttons.FancyButton
+
+                    android:id="@+id/cameraButton"
+                    style="@style/fancyButton"
+                    fancy:fb_defaultColor="@color/colorPrimary"
+                    fancy:fb_radius="30dp"
+                    fancy:fb_text="Camera"
+                    fancy:fb_textSize="15sp" />
+
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:id="@+id/galleryButton"
+                    style="@style/fancyButton"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/cameraButton"
+                    fancy:fb_defaultColor="@color/colorPrimary"
+                    fancy:fb_radius="30dp"
+                    fancy:fb_text="Gallery"
+                    fancy:fb_textSize="15sp" />
+
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:id="@+id/removeButton"
+                    style="@style/fancyButton"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/galleryButton"
+                    fancy:fb_borderColor="@color/colorPrimary"
+                    fancy:fb_borderWidth="2dp"
+                    fancy:fb_defaultColor="@android:color/transparent"
+                    fancy:fb_radius="30dp"
+                    fancy:fb_text="Remove"
+                    fancy:fb_textColor="@color/colorPrimary" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/firstNameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/firstNameTextEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/firstName"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="25" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/lastNameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/lastNameTextEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_name"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="25" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/userTypeRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <RadioButton
+                    android:id="@+id/producerRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/producer" />
+
+                <RadioButton
+                    android:id="@+id/consumerRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/consumer" />
+
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/companyNameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/companyNameTextEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/company_name"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="25" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/agreeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/agreeToTerms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/agree_with_terms_conditions" />
+            </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/doneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_done_white_24dp"
+                android:translationZ="12dp"
+                android:layout_marginBottom="10dp"
+                app:fabSize="normal" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
