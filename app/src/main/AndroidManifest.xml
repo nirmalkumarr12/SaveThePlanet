@@ -14,7 +14,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.SignInGoogleEmailActivity" />
@@ -24,6 +24,13 @@
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.SignInEmailActivity" />
         <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.ProductRegistration">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

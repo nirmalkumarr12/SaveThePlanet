@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:src="@mipmap/ic_done_white_24dp"
+            android:src="@mipmap/ic_arrow_forward_white_24dp"
             android:translationZ="12dp"
             android:layout_marginBottom="10dp"
             app:fabSize="normal" />
