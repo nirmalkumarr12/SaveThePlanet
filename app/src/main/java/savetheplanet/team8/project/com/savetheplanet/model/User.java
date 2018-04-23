@@ -1,6 +1,7 @@
 package savetheplanet.team8.project.com.savetheplanet.model;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private String firstName;
@@ -8,6 +9,8 @@ public class User {
     private String userId;
     private String email;
     private String companyName;
+    private HashMap<String, Object> products;
+    private String profile;
 
     public String getFirstName() {
         return firstName;
@@ -17,24 +20,25 @@ public class User {
         this.firstName = firstName;
     }
 
-    public List<Product> getProducts() {
+    public Map<String, Object> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(HashMap<String, Object> products) {
         this.products = products;
     }
 
-    private List<Product> products;
     public User() {
 
     }
 
-    public User(String email, String name, String lastName, String companyName){
+    public User(String email, String name, String lastName, String companyName, HashMap<String, Object> products, String profile) {
         this.email = email;
         this.firstName = name;
         this.lastName = lastName;
         this.companyName = companyName;
+        this.products = products;
+        this.profile = profile;
     }
 
     public String getName() {
@@ -75,5 +79,13 @@ public class User {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }

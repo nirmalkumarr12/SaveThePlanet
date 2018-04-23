@@ -68,7 +68,7 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
         System.out.print(getUid());
         if (getUid() != null) {
-            String userId = getUid();
+            userId = getUid();
             firebaseAuth = FirebaseAuth.getInstance();
             databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
             storageReference = FirebaseStorage.getInstance().getReference();
@@ -77,12 +77,12 @@ public class RegisterActivity extends BaseActivity {
             onAuthFailure();
         }
 
-            firstNameLayout = findViewById(R.id.firstNameTextInputLayout);
-            lastNameLayout = findViewById(R.id.lastNameTextInputLayout);
-            companyNameLayout = findViewById(R.id.companyNameTextInputLayout);
-            firstNameEditText = findViewById(R.id.firstNameTextEditText);
-            lastNameEditText = findViewById(R.id.lastNameTextEditText);
-            companyNameEditText = findViewById(R.id.companyNameTextEditText);
+        firstNameLayout = findViewById(R.id.firstNameTextInputLayout);
+        lastNameLayout = findViewById(R.id.lastNameTextInputLayout);
+        companyNameLayout = findViewById(R.id.companyNameTextInputLayout);
+        firstNameEditText = findViewById(R.id.firstNameTextEditText);
+        lastNameEditText = findViewById(R.id.lastNameTextEditText);
+        companyNameEditText = findViewById(R.id.companyNameTextEditText);
         doneButton = findViewById(R.id.doneButton);
         removeButton = findViewById(R.id.removeButton);
         cameraButton = findViewById(R.id.cameraButton);
@@ -148,7 +148,7 @@ public class RegisterActivity extends BaseActivity {
         if (requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK) {
 
             Uri selectedImageUri = data.getData();
-            StorageReference photoref = storageReference.child(userId).child(Objects.requireNonNull(selectedImageUri).getLastPathSegment());
+            final StorageReference photoref = storageReference.child(userId).child(selectedImageUri.getLastPathSegment());
             photoref.putFile(selectedImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -175,7 +175,7 @@ public class RegisterActivity extends BaseActivity {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    databaseReference.child("profile").setValue(Objects.requireNonNull(taskSnapshot.getDownloadUrl()).toString());
+                    databaseReference.child("profile").setValue(taskSnapshot.getDownloadUrl().toString());
                     Toast.makeText(RegisterActivity.this, "Profile Picture Set", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
