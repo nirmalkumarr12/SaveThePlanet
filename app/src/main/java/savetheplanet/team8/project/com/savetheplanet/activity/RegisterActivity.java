@@ -77,12 +77,12 @@ public class RegisterActivity extends BaseActivity {
             onAuthFailure();
         }
 
-        firstNameLayout = findViewById(R.id.firstNameTextInputLayout);
-        lastNameLayout = findViewById(R.id.lastNameTextInputLayout);
-        companyNameLayout = findViewById(R.id.companyNameTextInputLayout);
-        firstNameEditText = findViewById(R.id.firstNameTextEditText);
-        lastNameEditText = findViewById(R.id.lastNameTextEditText);
-        companyNameEditText = findViewById(R.id.companyNameTextEditText);
+            firstNameLayout = findViewById(R.id.firstNameTextInputLayout);
+            lastNameLayout = findViewById(R.id.lastNameTextInputLayout);
+            companyNameLayout = findViewById(R.id.companyNameTextInputLayout);
+            firstNameEditText = findViewById(R.id.firstNameTextEditText);
+            lastNameEditText = findViewById(R.id.lastNameTextEditText);
+            companyNameEditText = findViewById(R.id.companyNameTextEditText);
         doneButton = findViewById(R.id.doneButton);
         removeButton = findViewById(R.id.removeButton);
         cameraButton = findViewById(R.id.cameraButton);

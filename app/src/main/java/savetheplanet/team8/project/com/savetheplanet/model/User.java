@@ -1,5 +1,7 @@
 package savetheplanet.team8.project.com.savetheplanet.model;
 
+import java.util.List;
+
 public class User {
     private String firstName;
     private String lastName;
@@ -7,6 +9,23 @@ public class User {
     private String email;
     private String companyName;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    private List<Product> products;
     public User() {
 
     }

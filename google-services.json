@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "342137415638",
+    "firebase_url": "https://savetheplanet-8814d.firebaseio.com",
+    "project_id": "savetheplanet-8814d",
+    "storage_bucket": "savetheplanet-8814d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342137415638:android:0c1dd1d5ecf44e83",
+        "android_client_info": {
+          "package_name": "savetheplanet.team8.project.com.savetheplanet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342137415638-83n7q2lqane16m9fldfso0fjkf65i93n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD-2ZwRXFHy8Id3dELmmlnbOUQ5IOAGk4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
