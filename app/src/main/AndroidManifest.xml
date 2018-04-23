@@ -25,6 +25,9 @@
         <activity android:name=".activity.SignInEmailActivity" />
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.ProductRegistration">
+
+        </activity>
+        <activity android:name=".activity.activity_list_products">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
