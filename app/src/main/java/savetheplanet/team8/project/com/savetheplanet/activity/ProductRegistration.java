@@ -5,6 +5,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import savetheplanet.team8.project.com.savetheplanet.R;
@@ -61,9 +63,20 @@ public class ProductRegistration extends BaseActivity {
         String description=productDescription.getText().toString();
         String location=productLocation.getText().toString();
         String tag=productTag.getText().toString();
+        if(validateForm(name,(TextInputLayout)findViewById(R.id.firstNameTextInputLayout)))
+            return;
+        else if(validateForm(description,(TextInputLayout)findViewById(R.id.DescTextInputLayout)))
+            return;
+        else if(validateForm(location,(TextInputLayout)findViewById(R.id.companyNameTextInputLayout)))
+            return;
+        else if(validateForm(tag,(TextInputLayout)findViewById(R.id.productTagTextInputLayout)))
+            return;
+
+
         Product product=new Product(name,description,location,tag);
 
-        //Firebase newRequestRef = mDatabase.child("request").push();
+
+
             List<Product> plist=new ArrayList<Product>();
 
 
@@ -73,6 +86,18 @@ public class ProductRegistration extends BaseActivity {
 
 
         }
+    private boolean validateForm(String name, TextInputLayout textInputLayout) {
+        boolean valid = true;
+        String textOnlyRegex = "^[\\p{L} .'-]+$";
+        if (TextUtils.isEmpty(name) || !Pattern.matches(textOnlyRegex, name)) {
+            textInputLayout.setError("Enter a valid name");
+            valid = false;
+        } else {
+            textInputLayout.setError(null);
+        }
+
+        return !valid;
+    }
 
 
 }
