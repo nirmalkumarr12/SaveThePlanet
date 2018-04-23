@@ -69,7 +69,7 @@ public class AllProductListFragment extends Fragment {
         productsAddButton = view.findViewById(R.id.addProductsButton);
         recyclerView = view.findViewById(R.id.recycler_view);
 
-        mAdapter = new ProductAdaptor(productsList);
+        mAdapter = new ProductAdaptor(productsList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

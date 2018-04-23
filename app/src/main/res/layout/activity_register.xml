@@ -23,7 +23,7 @@
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_arrow_forward_white_24dp" />
+                android:src="@mipmap/ic_account_circle_white_24dp" />
 
             <TextView
                 android:id="@+id/displayName"
