@@ -126,7 +126,7 @@
                     android:id="@+id/productlocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Product Location"
+                    android:hint="Product Link"
                     android:inputType="textCapWords|textPersonName"
                     android:maxLength="25" />
 
