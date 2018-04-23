@@ -45,6 +45,7 @@ public class MyProductAdapter extends RecyclerView.Adapter<MyProductAdapter.View
         holder.description.setText(p.getDescription());
 //        holder.location.setText(p.getLocation());
         holder.tags.setText(p.getTag());
+        holder.productID.setText(p.getProductID());
         if (!p.getImageUrl().isEmpty()) {
             Picasso.with(context).load(p.getImageUrl()).fit().centerCrop().into(holder.productImage);
         }
@@ -74,7 +75,6 @@ public class MyProductAdapter extends RecyclerView.Adapter<MyProductAdapter.View
         }
 
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Delete product");
             MenuItem deleteProduct = menu.add(0, v.getId(), 0, "Delete");
             deleteProduct.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
