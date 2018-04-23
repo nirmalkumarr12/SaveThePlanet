@@ -29,7 +29,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import savetheplanet.team8.project.com.savetheplanet.R;
@@ -193,7 +192,7 @@ public class ProductRegistration extends BaseActivity {
     private boolean validateForm(String name, TextInputLayout textInputLayout) {
         boolean valid = true;
         String textOnlyRegex = "^[\\p{L} .'-]+$";
-        if (TextUtils.isEmpty(name) || !Pattern.matches(textOnlyRegex, name)) {
+        if (TextUtils.isEmpty(name)) {
             textInputLayout.setError("Enter a valid name");
             valid = false;
         } else {
