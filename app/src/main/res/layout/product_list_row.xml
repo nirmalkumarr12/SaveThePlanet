@@ -62,9 +62,14 @@
                 android:id="@+id/location"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
                 android:text="Product Link"
                 android:textAlignment="textEnd"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/productId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:visibility="gone" />
 
         </LinearLayout>

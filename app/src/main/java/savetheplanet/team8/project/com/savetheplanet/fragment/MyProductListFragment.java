@@ -32,7 +32,7 @@ import java.util.Objects;
 
 import savetheplanet.team8.project.com.savetheplanet.R;
 import savetheplanet.team8.project.com.savetheplanet.RecyclerTouchListener;
-import savetheplanet.team8.project.com.savetheplanet.activity.ProductAdaptor;
+import savetheplanet.team8.project.com.savetheplanet.activity.MyProductAdapter;
 import savetheplanet.team8.project.com.savetheplanet.activity.ProductRegistration;
 import savetheplanet.team8.project.com.savetheplanet.model.Product;
 import savetheplanet.team8.project.com.savetheplanet.preferences.Preferences;
@@ -42,7 +42,7 @@ public class MyProductListFragment extends Fragment {
 
     private List<Product> productsList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private ProductAdaptor mAdapter;
+    private MyProductAdapter mAdapter;
     DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
     private FloatingActionButton productsAddButton;
@@ -72,7 +72,7 @@ public class MyProductListFragment extends Fragment {
         productsAddButton = view.findViewById(R.id.addProductsButton);
         recyclerView = view.findViewById(R.id.recycler_view);
 
-        mAdapter = new ProductAdaptor(productsList, getContext());
+        mAdapter = new MyProductAdapter(productsList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -132,7 +132,7 @@ public class MyProductListFragment extends Fragment {
                             Log.d("TEST", dp.toString());
                             //product = dp.getValue(Product.class);
                             Map<String, String> prod = (Map<String, String>) dp.getValue();
-                            product = new Product(prod.get("name"), prod.get("description"), prod.get("location"), prod.get("tag"), prod.get("imageUrl"));
+                            product = new Product(prod.get("name"), prod.get("description"), prod.get("location"), prod.get("tag"), prod.get("imageUrl"), dp.getKey());
                             productsList.add(product);
                         }
 

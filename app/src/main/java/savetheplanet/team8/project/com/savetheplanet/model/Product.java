@@ -7,6 +7,16 @@ public class Product {
     private String location;
     private String tag;
     private String imageUrl;
+    private String productID;
+
+    public Product(String name, String description, String location, String tag, String imageUrl, String productID) {
+        this.name = name;
+        this.description = description;
+        this.location = location;
+        this.tag = tag;
+        this.imageUrl = imageUrl;
+        this.productID = productID;
+    }
 
     public Product(String name, String description, String location, String tag, String imageUrl) {
         this.name = name;
@@ -54,5 +64,13 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 }

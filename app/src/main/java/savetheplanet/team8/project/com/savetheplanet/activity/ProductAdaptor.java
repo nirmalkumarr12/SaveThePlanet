@@ -20,12 +20,12 @@ import savetheplanet.team8.project.com.savetheplanet.model.Product;
  * Created by DhineshKumarPC on 4/22/2018.
  */
 
-public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.MyViewHolder>{
+public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.MyViewHolder> {
     private List<Product> productsList;
     private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, description, location,tags;
+        public TextView name, description, location, tags;
         public ImageView productImage;
 
         public MyViewHolder(View view) {
@@ -60,7 +60,7 @@ public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.MyViewHo
         holder.description.setText(p.getDescription());
 //        holder.location.setText(p.getLocation());
         holder.tags.setText(p.getTag());
-        if (! p.getImageUrl().isEmpty()) {
+        if (!p.getImageUrl().isEmpty()) {
             Picasso.with(context).load(p.getImageUrl()).fit().centerCrop().into(holder.productImage);
         }
 
