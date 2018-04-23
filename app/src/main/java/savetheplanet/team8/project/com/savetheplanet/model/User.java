@@ -9,6 +9,7 @@ public class User {
     private String userId;
     private String email;
     private String companyName;
+    private String userType;
     private HashMap<String, Object> products;
     private String profile;
 
@@ -32,11 +33,12 @@ public class User {
 
     }
 
-    public User(String email, String name, String lastName, String companyName, HashMap<String, Object> products, String profile) {
+    public User(String email, String name, String lastName, String companyName, String userType, HashMap<String, Object> products, String profile) {
         this.email = email;
         this.firstName = name;
         this.lastName = lastName;
         this.companyName = companyName;
+        this.userType = userType;
         this.products = products;
         this.profile = profile;
     }
@@ -87,5 +89,13 @@ public class User {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

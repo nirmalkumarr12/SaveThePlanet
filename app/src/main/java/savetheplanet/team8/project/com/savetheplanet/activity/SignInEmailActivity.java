@@ -111,6 +111,7 @@ public class SignInEmailActivity extends BaseActivity implements View.OnFocusCha
                                         editor.putString(Preferences.FIRST_NAME, user.getName());
                                         editor.putString(Preferences.LAST_NAME, user.getLastName());
                                         editor.putString(Preferences.EMAIL, user.getEmail());
+                                        editor.putString(Preferences.USER_TYPE, user.getUserType());
                                     }
                                     editor.putString(Preferences.USER_ID, getUid());
                                     editor.apply();

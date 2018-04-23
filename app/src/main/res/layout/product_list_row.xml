@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name"
                 android:layout_weight="1"
-                android:text="Loc"
+                android:text="Product Link"
                 android:textAlignment="textEnd" />
         </LinearLayout>
 

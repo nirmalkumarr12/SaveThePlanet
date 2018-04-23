@@ -173,6 +173,8 @@ public class ProductRegistration extends BaseActivity {
             return;
         }
 
+        if (!location.startsWith("http://") && !location.startsWith("https://"))
+            location = "http://" + location;
 
         Product product = new Product(name, description, location, tag, imageUrl);
 
@@ -201,8 +203,8 @@ public class ProductRegistration extends BaseActivity {
         return !valid;
     }
 
-    private boolean validateUrl(String url, TextInputLayout textInputLayout){
-        if(!Patterns.WEB_URL.matcher(url).matches()){
+    private boolean validateUrl(String url, TextInputLayout textInputLayout) {
+        if (!Patterns.WEB_URL.matcher(url).matches()) {
             textInputLayout.setError("Enter a valid url");
             return true;
         }

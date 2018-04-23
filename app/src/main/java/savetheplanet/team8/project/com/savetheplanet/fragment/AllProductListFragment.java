@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +33,6 @@ import java.util.Objects;
 import savetheplanet.team8.project.com.savetheplanet.R;
 import savetheplanet.team8.project.com.savetheplanet.RecyclerTouchListener;
 import savetheplanet.team8.project.com.savetheplanet.activity.ProductAdaptor;
-import savetheplanet.team8.project.com.savetheplanet.activity.ProductRegistration;
 import savetheplanet.team8.project.com.savetheplanet.model.Product;
 import savetheplanet.team8.project.com.savetheplanet.preferences.Preferences;
 
@@ -64,7 +62,7 @@ public class AllProductListFragment extends Fragment {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String userId = sharedPreferences.getString(Preferences.USER_ID, null);
         toolbar = Objects.requireNonNull(getActivity()).findViewById(R.id.toolbar);
-        toolbar.setTitle("My Products");
+        toolbar.setTitle("Browse Products");
         toolbar.setVisibility(View.VISIBLE);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
@@ -84,7 +82,7 @@ public class AllProductListFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Product product = productsList.get(position);
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(product.getLocation()));
                 startActivity(browserIntent);
             }
 
@@ -94,13 +92,7 @@ public class AllProductListFragment extends Fragment {
             }
         }));
 
-        productsAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ProductRegistration.class);
-                startActivity(intent);
-            }
-        });
+        productsAddButton.setVisibility(View.GONE);
 
         ///Dummy Data
         //prepareProductData();

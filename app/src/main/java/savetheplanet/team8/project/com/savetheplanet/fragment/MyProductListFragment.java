@@ -1,9 +1,7 @@
 package savetheplanet.team8.project.com.savetheplanet.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -18,7 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,14 +37,7 @@ import savetheplanet.team8.project.com.savetheplanet.activity.ProductRegistratio
 import savetheplanet.team8.project.com.savetheplanet.model.Product;
 import savetheplanet.team8.project.com.savetheplanet.preferences.Preferences;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MyProductListFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MyProductListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MyProductListFragment extends Fragment {
 
     private List<Product> productsList = new ArrayList<>();
@@ -73,7 +63,7 @@ public class MyProductListFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_list_all_products, container, false);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String userId = sharedPreferences.getString(Preferences.USER_ID, null);
-        
+        String userType = sharedPreferences.getString(Preferences.USER_TYPE, "");
         toolbar = Objects.requireNonNull(getActivity()).findViewById(R.id.toolbar);
         toolbar.setTitle("My Products");
         toolbar.setVisibility(View.VISIBLE);
@@ -104,13 +94,18 @@ public class MyProductListFragment extends Fragment {
             }
         }));
 
-        productsAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ProductRegistration.class);
-                startActivity(intent);
-            }
-        });
+        if (userType.equalsIgnoreCase("producer")) {
+            productsAddButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), ProductRegistration.class);
+                    startActivity(intent);
+                }
+            });
+        }else {
+            productsAddButton.setVisibility(View.GONE);
+
+        }
 
         ///Dummy Data
         //prepareProductData();

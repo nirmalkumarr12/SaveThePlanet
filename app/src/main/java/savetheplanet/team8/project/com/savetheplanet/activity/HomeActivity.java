@@ -30,6 +30,7 @@ import com.squareup.picasso.Picasso;
 
 import savetheplanet.team8.project.com.savetheplanet.R;
 import savetheplanet.team8.project.com.savetheplanet.fragment.AllProductListFragment;
+import savetheplanet.team8.project.com.savetheplanet.fragment.MyProductListFragment;
 import savetheplanet.team8.project.com.savetheplanet.preferences.Preferences;
 
 public class HomeActivity extends BaseActivity {
@@ -133,7 +134,7 @@ public class HomeActivity extends BaseActivity {
                         fragment = new AllProductListFragment();
                         break;
                     case 2:
-                        fragment = new AllProductListFragment();
+                        fragment = new MyProductListFragment();
                         break;
                     case 4:
                         FirebaseAuth.getInstance().signOut();

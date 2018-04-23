@@ -49,7 +49,7 @@ public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.MyViewHo
         Product p = productsList.get(position);
         holder.name.setText(p.getName());
         holder.description.setText(p.getDescription());
-        holder.location.setText(p.getLocation());
+//        holder.location.setText(p.getLocation());
         holder.tags.setText(p.getTag());
     }
 

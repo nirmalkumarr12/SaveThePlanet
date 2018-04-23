@@ -232,6 +232,7 @@ public class RegisterActivity extends BaseActivity {
                     editor.putString(Preferences.LAST_NAME, user.getLastName());
                     editor.putString(Preferences.EMAIL, user.getEmail());
                     editor.putString(Preferences.IMAGE_URL, imageUrl);
+                    editor.putString(Preferences.USER_TYPE, user.getUserType());
 
                 }
                 editor.putString(Preferences.USER_ID, getUid());
