@@ -11,6 +11,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -164,7 +165,7 @@ public class ProductRegistration extends BaseActivity {
         } else if (validateForm(description, (TextInputLayout) findViewById(R.id.DescTextInputLayout))) {
             hideProgressDialog();
             return;
-        } else if (validateForm(location, (TextInputLayout) findViewById(R.id.companyNameTextInputLayout))) {
+        } else if (validateUrl(location, (TextInputLayout) findViewById(R.id.companyNameTextInputLayout))) {
             hideProgressDialog();
             return;
         } else if (validateForm(tag, (TextInputLayout) findViewById(R.id.productTagTextInputLayout))) {
@@ -198,6 +199,14 @@ public class ProductRegistration extends BaseActivity {
         }
 
         return !valid;
+    }
+
+    private boolean validateUrl(String url, TextInputLayout textInputLayout){
+        if(!Patterns.WEB_URL.matcher(url).matches()){
+            textInputLayout.setError("Enter a valid url");
+            return true;
+        }
+        return false;
     }
 
 
