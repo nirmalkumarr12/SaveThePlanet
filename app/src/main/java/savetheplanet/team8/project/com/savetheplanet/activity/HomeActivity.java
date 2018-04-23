@@ -14,11 +14,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -33,7 +30,6 @@ import com.squareup.picasso.Picasso;
 
 import savetheplanet.team8.project.com.savetheplanet.R;
 import savetheplanet.team8.project.com.savetheplanet.fragment.AllProductListFragment;
-import savetheplanet.team8.project.com.savetheplanet.model.User;
 import savetheplanet.team8.project.com.savetheplanet.preferences.Preferences;
 
 public class HomeActivity extends BaseActivity {
@@ -42,14 +38,28 @@ public class HomeActivity extends BaseActivity {
     DatabaseReference databaseReference;
     private Drawer result = null;
     AccountHeader headerResult;
+    ProfileDrawerItem userProfile;
+    String imageUrl, firstName, lastName, email = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_home);
         toolbar = findViewById(R.id.toolbar);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            imageUrl = extras.getString(Preferences.IMAGE_URL);
+            firstName = extras.getString(Preferences.FIRST_NAME);
+            lastName = extras.getString(Preferences.LAST_NAME);
+
+        } else {
+            imageUrl = sharedPreferences.getString(Preferences.IMAGE_URL, "");
+            firstName = sharedPreferences.getString(Preferences.FIRST_NAME, "");
+            lastName = sharedPreferences.getString(Preferences.LAST_NAME, "");
+            email = sharedPreferences.getString(Preferences.EMAIL, "");
+        }
 
         if (getUid() != null) {
             String userId = getUid();
@@ -60,10 +70,6 @@ public class HomeActivity extends BaseActivity {
             onAuthFailure();
         }
 
-        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String firstName = sharedPreferences.getString(Preferences.FIRST_NAME, "");
-        String lastName = sharedPreferences.getString(Preferences.LAST_NAME, "");
-        String email = sharedPreferences.getString(Preferences.EMAIL, "");
 
         Fragment home_fragment = new AllProductListFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -72,7 +78,6 @@ public class HomeActivity extends BaseActivity {
 
         final PrimaryDrawerItem home = new PrimaryDrawerItem().withName("Browse Products").withIdentifier(1);
         final PrimaryDrawerItem profile = new PrimaryDrawerItem().withName("My Products").withIdentifier(2);
-        final PrimaryDrawerItem vitals = new PrimaryDrawerItem().withName("Vitals").withIdentifier(3);
         final PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIdentifier(4);
 
         DrawerImageLoader.init(new AbstractDrawerImageLoader() {
@@ -87,7 +92,7 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
-        final ProfileDrawerItem userProfile = new ProfileDrawerItem().withName(firstName + " " + lastName).withEmail(email).withIcon(R.mipmap.ic_account_circle_white_24dp);
+        userProfile = new ProfileDrawerItem().withName(firstName + " " + lastName).withEmail(email).withIcon(imageUrl);
 
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -115,26 +120,6 @@ public class HomeActivity extends BaseActivity {
                 .addDrawerItems(profile)
                 .addDrawerItems(logout)
                 .buildForFragment();
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                String profilePic = user.getProfile();
-                if (profilePic != null && !profilePic.equals("")) {
-                    userProfile.withIcon(profilePic);
-                    headerResult.updateProfile(userProfile);
-                } else {
-                    userProfile.withIcon(R.mipmap.ic_account_circle_white_24dp);
-                    headerResult.updateProfile(userProfile);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
 
         result.setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -177,6 +162,7 @@ public class HomeActivity extends BaseActivity {
         });
 
     }
+
 
     private void onAuthFailure() {
         Intent intent = new Intent(this, SignInSignUpActivity.class);

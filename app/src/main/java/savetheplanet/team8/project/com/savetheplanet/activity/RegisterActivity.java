@@ -61,6 +61,7 @@ public class RegisterActivity extends BaseActivity {
     CheckBox checkBox;
     private FirebaseAuth firebaseAuth;
     String userType = "producer";
+    String imageUrl = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -153,6 +154,7 @@ public class RegisterActivity extends BaseActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Picasso.with(RegisterActivity.this).load(taskSnapshot.getDownloadUrl()).into(imageView);
+                    imageUrl = taskSnapshot.getDownloadUrl().toString();
                     databaseReference.child("profile").setValue(Objects.requireNonNull(taskSnapshot.getDownloadUrl()).toString());
                     Toast.makeText(RegisterActivity.this, "Profile Picture Set", Toast.LENGTH_SHORT).show();
 
@@ -176,6 +178,7 @@ public class RegisterActivity extends BaseActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     databaseReference.child("profile").setValue(taskSnapshot.getDownloadUrl().toString());
+                    imageUrl = taskSnapshot.getDownloadUrl().toString();
                     Toast.makeText(RegisterActivity.this, "Profile Picture Set", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -228,6 +231,8 @@ public class RegisterActivity extends BaseActivity {
                     editor.putString(Preferences.FIRST_NAME, user.getName());
                     editor.putString(Preferences.LAST_NAME, user.getLastName());
                     editor.putString(Preferences.EMAIL, user.getEmail());
+                    editor.putString(Preferences.IMAGE_URL, imageUrl);
+
                 }
                 editor.putString(Preferences.USER_ID, getUid());
                 editor.apply();
@@ -242,6 +247,9 @@ public class RegisterActivity extends BaseActivity {
         hideProgressDialog();
         Toast.makeText(RegisterActivity.this, "User details saved", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+        intent.putExtra(Preferences.IMAGE_URL, imageUrl);
+        intent.putExtra(Preferences.FIRST_NAME, firstName);
+        intent.putExtra(Preferences.LAST_NAME, lastName);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 

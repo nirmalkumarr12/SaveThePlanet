@@ -7,4 +7,5 @@ public class Preferences {
     public static final String COMPANY_NAME = "companyName";
     public static final String EMAIL = "email";
     public static final String USER_ID = "userId";
+    public static final String IMAGE_URL = "imageUrl";
 }
