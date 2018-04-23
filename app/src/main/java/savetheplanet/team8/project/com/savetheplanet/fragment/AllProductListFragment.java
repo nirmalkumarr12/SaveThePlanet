@@ -2,6 +2,7 @@ package savetheplanet.team8.project.com.savetheplanet.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -83,7 +84,8 @@ public class AllProductListFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Product product = productsList.get(position);
-                Toast.makeText(getContext(), product.getName() + " is selected!", Toast.LENGTH_SHORT).show();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
+                startActivity(browserIntent);
             }
 
             @Override
