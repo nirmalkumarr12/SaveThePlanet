@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Product Name"
                     android:inputType="textCapWords|textPersonName"
-                    android:maxLength="25" />
+                    />
 
 
             </android.support.design.widget.TextInputLayout>
@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Product Description"
                     android:inputType="textCapWords|textPersonName"
-                    android:maxLength="25" />
+                     />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Product Link"
                     android:inputType="textCapWords|textPersonName"
-                    android:maxLength="25" />
+                     />
 
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Product Tag"
                     android:inputType="textCapWords|textPersonName"
-                    android:maxLength="25" />
+                     />
 
             </android.support.design.widget.TextInputLayout>
 
