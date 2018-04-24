@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,7 +34,6 @@ import savetheplanet.team8.project.com.savetheplanet.R;
 import savetheplanet.team8.project.com.savetheplanet.model.Product;
 
 public class ProductRegistration extends BaseActivity {
-    TextView displayName;
     TextInputLayout firstNameLayout, lastNameLayout, companyNameLayout;
     TextInputEditText productName, productDescription, productLocation, productTag;
     FloatingActionButton doneButton;
